@@ -21,29 +21,48 @@ function playRound(playerSelection, computerSelection){
   return `You Win! ${playerSelection} beats ${computerSelection}`
 }
 
+
+const buttons = document.querySelectorAll("button");
+let counter = 0;
+  for(let i = 0 ; i < buttons.length ; i++){
+
+    buttons[i].addEventListener("click",function(){
+      const outcome = playRound((buttons[i].id),getComputerChoice());
+      const results = document.createElement("div");
+      const resultsText = document.createTextNode(outcome);
+      results.appendChild(resultsText);
+      document.getElementById('results').appendChild(results);
+      results.classList.add("winOrLose");
+      console.log(outcome);
+      counter += game(outcome);
+      if(counter === 6){
+        const main = document.getElementById('main');
+        main.innerHTML =  '';
+        const finalStatement = document.createElement('div');
+        finalStatement.appendChild(document.createTextNode("END OF THE GAME."));
+        finalStatement.classList.add('final');
+        main.appendChild(finalStatement);
+
+      }
+    })
+  }
 // function will perform 5 rounds between player and the computer
 
-function game(){
+function game( statement ){
   let playerScore = 0
   let computerScore = 0
-  for(let i = 0 ; i < 5 ; i++){
-    const statement = playRound(prompt("Enter your choice "),getComputerChoice());
-    console.log(statement);
-    if(statement.includes('Win')){
-      playerScore++
-    }else{
-      computerScore++
-    }
+  
+  console.log(statement);
+  if(statement.includes('Win')){
+    playerScore++;
+    const p = document.createElement('p');
+    p.appendChild(document.createTextNode(playerScore));
+    document.getElementById('person').appendChild(p);
+  }else if(statement.includes('Lose')){
+    computerScore++
+    const p = document.createElement('p');
+    p.appendChild(document.createTextNode(computerScore));
+    document.getElementById('computer').appendChild(p);
   }
-  if(playerScore > computerScore){
-    console.log("Congratulation! Player Human Won! ")
-    console.log("Player Score : "+playerScore);
-    console.log("Computer Score : "+computerScore)
-  }else{
-    console.log("Oh no! Better luck next time :(")
-    console.log("Player Score : "+playerScore);
-    console.log("Computer Score : "+computerScore)
-  }
+  return playerScore + computerScore;
 }
-
-game();

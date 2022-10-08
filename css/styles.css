@@ -1,0 +1,55 @@
+*{
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color:  #2a2a2a;
+  color: white;
+}
+.container{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+button{
+  border: none;
+  background-color: rgb(221, 177, 118);
+  color: white;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.results{
+  overflow: hidden;
+  height: 60vh;
+  display: flex;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+.scoreTracker{
+  display: flex;
+  gap: 5rem;
+  justify-content: center;
+}
+.winOrLose{
+  background-color: white;
+  color: rgb(48, 48, 48);
+  padding: 1rem 3rem;
+  font-size: 1.2rem;
+  border-radius: 20px;
+}
+.final{
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10rem;
+  padding-top: 20rem;
+}
